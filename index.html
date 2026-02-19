@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Movie Search App</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>🎬 Movie Search</h1>
+        <div class="header-actions">
+            <button class="btn-favorites" onclick="showFavorites()">❤️ Favorites (<span id="favCount">0</span>)</button>
+            <button class="btn-history" onclick="showHistory()">🕒 History</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="Search movies, TV shows..." autocomplete="off">
+            <button id="searchBtn">Search</button>
+            <div id="suggestions" class="suggestions hidden"></div>
+        </div>
+
+        <div class="quick-search">
+            <p>Quick Search:</p>
+            <button onclick="quickSearch('Avengers')">Avengers</button>
+            <button onclick="quickSearch('RRR')">RRR</button>
+            <button onclick="quickSearch('Baahubali')">Baahubali</button>
+            <button onclick="quickSearch('Inception')">Inception</button>
+            <button onclick="quickSearch('Titanic')">Titanic</button>
+            <button onclick="quickSearch('Spider-Man')">Spider-Man</button>
+            <button onclick="quickSearch('Batman')">Batman</button>
+            <button onclick="quickSearch('Parasite')">Parasite</button>
+        </div>
+
+        <div class="filters">
+            <select id="typeFilter">
+                <option value="">All Types</option>
+                <option value="movie">Movies</option>
+                <option value="series">TV Series</option>
+            </select>
+            <select id="yearFilter">
+                <option value="">All Years</option>
+            </select>
+            <select id="languageFilter">
+                <option value="">All Languages</option>
+                <option value="en-US">English</option>
+                <option value="hi-IN">Hindi</option>
+                <option value="te-IN">Telugu</option>
+                <option value="ta-IN">Tamil</option>
+                <option value="ml-IN">Malayalam</option>
+                <option value="kn-IN">Kannada</option>
+                <option value="es-ES">Spanish</option>
+                <option value="fr-FR">French</option>
+                <option value="de-DE">German</option>
+                <option value="ja-JP">Japanese</option>
+                <option value="ko-KR">Korean</option>
+                <option value="zh-CN">Chinese</option>
+                <option value="ar-SA">Arabic</option>
+                <option value="ru-RU">Russian</option>
+            </select>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Loading movies...</p>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <div id="results" class="results-grid"></div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="movieDetails"></div>
+        </div>
+    </div>
+
+    <div id="favoritesModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeFavoritesModal()">&times;</span>
+            <h2>❤️ My Favorites</h2>
+            <div id="favoritesList"></div>
+        </div>
+    </div>
+
+    <div id="historyModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeHistoryModal()">&times;</span>
+            <h2>🕒 Search History</h2>
+            <button class="btn-clear-history" onclick="clearHistory()">Clear All</button>
+            <div id="historyList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
